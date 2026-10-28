@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#000000">
+<title>為你好02／比較</title>
+<style>
+:root{color-scheme:dark;--muted:rgba(255,255,255,.48)}
+*{box-sizing:border-box}html,body{margin:0;width:100%;height:100%;overflow:hidden;background:#000;color:#fff;font-family:-apple-system,BlinkMacSystemFont,"PingFang TC","Microsoft JhengHei",sans-serif}
+button,input,select,summary{font:inherit}button,select{color:inherit}button{cursor:pointer}button:focus-visible,summary:focus-visible,select:focus-visible{outline:1px solid #fff;outline-offset:5px}
+#clip{position:fixed;inset:0;width:100%;height:100%;object-fit:contain;background:#000;touch-action:none;cursor:grab}#clip.dragging{cursor:grabbing}
+.hud{position:fixed;pointer-events:none;padding:clamp(20px,3.3vw,44px);padding-top:max(24px,env(safe-area-inset-top));padding-bottom:max(20px,env(safe-area-inset-bottom));display:flex;flex-direction:column;justify-content:space-between}
+header{display:flex;align-items:flex-start;justify-content:space-between;gap:24px}h1{font-size:18px;letter-spacing:.24em;font-weight:400;margin:12px 0 0}.subtitle{font-size:10px;letter-spacing:.12em;margin-top:9px;color:var(--muted)}.tag{font-size:10px;letter-spacing:.12em;text-align:right;line-height:1.8}.status-dot{width:4px;height:4px;border-radius:100%;background:#fff;display:inline-block;margin-right:7px;vertical-align:middle}
+.top-actions{margin-top:13px;display:flex;justify-content:flex-end;gap:14px;pointer-events:auto}.link{border:0;padding:0;background:transparent;font-size:10px;letter-spacing:.08em;color:rgba(255,255,255,.7)}.link:hover{color:#fff}
+footer{width:min(620px,100%);margin:0 auto;pointer-events:auto}.meter{display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:13px;gap:20px}.angle{font:300 31px/1 ui-monospace,SFMono-Regular,Consolas,monospace;letter-spacing:-.035em}.stage{font-size:11px;letter-spacing:.19em;margin-bottom:4px;color:rgba(255,255,255,.72)}
+.timeline{width:100%;position:relative}input[type=range]{--progress:50%;appearance:none;-webkit-appearance:none;display:block;width:100%;height:24px;margin:0;background:transparent;cursor:ew-resize;touch-action:pan-y}input[type=range]::-webkit-slider-runnable-track{height:1px;background:linear-gradient(to right,#fff var(--progress),rgba(255,255,255,.23) var(--progress))}input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;height:10px;width:10px;margin-top:-4.5px;border:1px solid #fff;border-radius:50%;background:#000}input[type=range]::-moz-range-track{height:1px;background:rgba(255,255,255,.3)}input[type=range]::-moz-range-progress{height:1px;background:#fff}input[type=range]::-moz-range-thumb{height:9px;width:9px;border:1px solid #fff;border-radius:50%;background:#000}
+.ticks{display:flex;justify-content:space-between;margin:2px 0 19px}.tick{border:0;background:none;padding:0;color:var(--muted);font-size:9px;font-family:ui-monospace,monospace}.tick:hover{color:#fff}.buttons{display:flex;gap:9px;flex-wrap:wrap}.btn{border:1px solid rgba(255,255,255,.32);background:#000;padding:11px 18px;border-radius:2px;font-size:11px;letter-spacing:.07em;min-height:38px;transition:border-color .2s}.btn:hover{border-color:#fff}.btn.primary{background:#fff;color:#000;border-color:#fff;min-width:112px}.btn.minor{padding-left:13px;padding-right:13px;color:rgba(255,255,255,.72)}.status{font-size:10px;color:var(--muted);margin:14px 0 0;line-height:1.8;min-height:18px;letter-spacing:.03em}
+details{pointer-events:auto;position:relative}summary{cursor:pointer;list-style:none}summary::-webkit-details-marker{display:none}.panel{position:absolute;top:30px;right:0;width:min(330px,calc(100vw - 40px));padding:22px;background:#060606;border:1px solid rgba(255,255,255,.25);line-height:1.7;font-size:11px;box-shadow:0 12px 50px #000}.panel h2{margin:0 0 18px;font-size:13px;font-weight:400;letter-spacing:.12em}.field{display:flex;justify-content:space-between;gap:15px;align-items:center;margin:13px 0}.field select{background:#000;border:1px solid #444;padding:7px;font-size:11px;max-width:170px}.field input{accent-color:#fff}.panel p{color:var(--muted);margin-bottom:0;font-size:10px}
+.clean .hud{display:none}#restore{position:fixed;top:max(18px,env(safe-area-inset-top));right:20px;border:1px solid #444;padding:9px 12px;color:#aaa;opacity:.5;background:#000;font-size:10px}#restore:hover{opacity:1}#restore[hidden]{display:none}
+@media(max-width:520px){.hud{padding-left:20px;padding-right:20px}h1{font-size:16px}.subtitle{font-size:9px}.tag{font-size:8px}.top-actions{gap:12px}.buttons{gap:7px}.btn{padding:10px 13px;font-size:10px}.btn.primary{min-width:104px}.angle{font-size:27px}.stage{font-size:10px}.ticks{margin-bottom:14px}.status{font-size:9px}.btn.minor{padding:10px}.meter{margin-bottom:8px}}
+@media(max-height:540px){h1,.subtitle{display:none}.hud{padding:15px 22px}.top-actions{margin-top:4px}.meter{margin-bottom:0}.angle{font-size:23px}.ticks{margin:0 0 8px}.status{display:none}.btn{padding:6px 12px;min-height:29px}.buttons{justify-content:center}footer{max-width:520px}.stage{font-size:9px}}
+@media(prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+<video id="clip" src="gemini_generated_video_51ad185d.mp4" muted playsinline preload="auto" aria-label="水面倒影與漣漪動畫"></video>
+<div class="hud">
+  <header>
+    <div><h1>為你好02／比較</h1><div class="subtitle">旋轉水面 / 倒影浮現 / 找到自己的方向</div></div>
+    <div><div class="tag"><span class="status-dot"></span><span id="mode">手動互動</span><br>&minus;&infin; &mdash; +&infin;</div>
+      <div class="top-actions"><button class="link" id="clean">純畫面</button><details id="options"><summary class="link">設定</summary><div class="panel"><h2>互動設定</h2>
+        <label class="field"><span>設備轉動方式</span><select id="axis"><option value="gamma">像圓盤轉動</option><option value="alpha">水平轉身</option></select></label>
+        <label class="field"><span>反轉感測方向</span><input id="reverse" type="checkbox"></label>
+        <button class="btn" id="fullscreen">全螢幕展示</button><p>設備需以 HTTPS 開啟並授權。影片前半段正向播放，後半段倒向播放。滑桿與拖曳也可操作。</p>
+      </div></details></div>
+    </div>
+  </header>
+  <footer>
+    <div class="meter"><output class="angle" id="angle">000.0°</output><span class="stage" id="stage">01 / 比較的話語</span></div>
+    <div class="timeline"><input type="range" id="scrub" min="-360" max="360" step="0.1" value="0" aria-label="旋轉角度，可向正反方向持續旋轉"><div class="ticks"><button class="tick" data-angle="-360">-360°</button><button class="tick" data-angle="-180">-180°</button><button class="tick" data-angle="0">0°</button><button class="tick" data-angle="180">180°</button><button class="tick" data-angle="360">360°</button></div></div>
+    <div class="buttons"><button class="btn primary" id="play">▷ 播放預覽</button><button class="btn" id="gyro">啟用設備轉動</button><button class="btn minor" id="calibrate">校正 0°</button><button class="btn minor" id="reset">回到起點</button></div>
+    <p class="status" id="status" role="status" aria-live="polite">拖曳滑桿或畫面，沿著影片過場旋轉。180° 後影片倒向播放，360° 回到起點。</p>
+  </footer>
+</div>
+<button id="restore" hidden>顯示控制介面</button>
+<script>
+(() => {
+  const video=document.querySelector('#clip'), scrub=document.querySelector('#scrub'), angleOut=document.querySelector('#angle');
+  const stage=document.querySelector('#stage'), mode=document.querySelector('#mode'), status=document.querySelector('#status');
+  const play=document.querySelector('#play'), gyro=document.querySelector('#gyro'), axis=document.querySelector('#axis'), reverse=document.querySelector('#reverse');
+  let duration=0, angle=0, auto=false, raf=0, previewStart=0, pointerDown=false, dragPrevious=null, sensorOn=false, baseline=null, sensorAngle=0, lastSeek=-1;
+  const clamp=(x,a,b)=>Math.max(a,Math.min(b,x));
+  function fitHud(){const s=Math.min(innerWidth/2048,innerHeight/2732),w=2048*s,h=2732*s;Object.assign(document.querySelector('.hud').style,{left:`${(innerWidth-w)/2}px`,top:`${(innerHeight-h)/2}px`,width:`${w}px`,height:`${h}px`})}
+  fitHud();window.addEventListener('resize',fitHud,{passive:true});
+  function clipTime(deg){const phase=((deg%360)+360)%360;return duration*(phase<=180?phase:360-phase)/180}
+  function seekClip(deg){if(!duration)return;const t=clipTime(deg);if(Math.abs(t-lastSeek)>.025){video.currentTime=t;lastSeek=t}}
+  function update(deg,fromSensor=false){angle=deg;scrub.value=clamp(deg,-360,360);scrub.style.setProperty('--progress',`${(Number(scrub.value)+360)/720*100}%`);angleOut.value=`${deg.toFixed(1).padStart(5,'0')}°`;const phase=((deg%360)+360)%360;stage.textContent=phase<85?'01 / 比較的話語':phase<100?'02 / 文字穿越':phase<180?'03 / 倒影浮現':phase<265?'04 / 找到另一面':'05 / 回到起點';if(!fromSensor&&!auto)mode.textContent='手動互動';seekClip(deg)}
+  video.addEventListener('loadedmetadata',()=>{duration=video.duration;video.pause();update(0,true);status.textContent=`影片已載入 · ${duration.toFixed(1)} 秒。可旋轉畫面檢視倒影。`;if(!new URLSearchParams(location.search).has('manual')&&!matchMedia('(prefers-reduced-motion: reduce)').matches)setTimeout(()=>{if(!auto&&angle===0)play.click()},900)});
+  video.addEventListener('error',()=>{status.textContent='找不到 gemini_generated_video_51ad185d.mp4；請讓影片與本頁 HTML 保持在同一資料夾。'});
+  scrub.addEventListener('input',()=>{stopPreview();video.pause();update(Number(scrub.value));status.textContent='可停在任何角度檢視過場。'});
+  document.querySelectorAll('.tick').forEach(b=>b.addEventListener('click',()=>{stopPreview();video.pause();update(Number(b.dataset.angle),true)}));
+  function stopPreview(){auto=false;cancelAnimationFrame(raf);play.textContent='▷ 播放預覽';if(!sensorOn)mode.textContent='手動互動'}
+  function previewFrame(now){if(!auto)return;const turnMs=Math.max(1000,duration*2000),next=(now-previewStart)/turnMs*360;update(next);if(next>=360){stopPreview();update(360);status.textContent='已完成一圈，回到起始畫面。';return}raf=requestAnimationFrame(previewFrame)}
+  play.addEventListener('click',()=>{if(auto){stopPreview();video.pause();return}if(!duration){status.textContent='影片載入中，請稍候。';return}if(angle>=360)update(0);auto=true;sensorOn=false;video.pause();mode.textContent='自動預覽';play.textContent='Ⅱ 暫停預覽';const turnMs=Math.max(1000,duration*2000);previewStart=performance.now()-(angle/360)*turnMs;status.textContent='正在按影片原始時長播放一圈：前半段正向，後半段倒向。';raf=requestAnimationFrame(previewFrame)});
+  document.querySelector('#reset').addEventListener('click',()=>{stopPreview();video.pause();baseline=null;sensorAngle=0;update(0);status.textContent='已回到 0°。'});
+  document.querySelector('#clean').addEventListener('click',()=>{document.body.classList.add('clean');document.querySelector('#restore').hidden=false});
+  document.querySelector('#restore').addEventListener('click',()=>{document.body.classList.remove('clean');document.querySelector('#restore').hidden=true});
+  document.querySelector('#fullscreen').addEventListener('click',async()=>{try{if(!document.fullscreenElement)await document.documentElement.requestFullscreen();else await document.exitFullscreen()}catch{status.textContent='此瀏覽器不支援全螢幕。'}});
+  function axisValue(e){return axis.value==='alpha'?e.alpha:e.gamma}
+  function onOrientation(e){const raw=axisValue(e);if(raw==null)return;if(baseline==null){baseline=raw;status.textContent='已校正目前姿勢為 0°，請像轉圓盤一樣繼續轉動。';return}let delta=((raw-baseline+540)%360)-180;baseline=raw;if(reverse.checked)delta=-delta;sensorAngle+=delta;stopPreview();video.pause();sensorOn=true;mode.textContent='設備互動';gyro.textContent='停用設備轉動';update(sensorAngle,true)}
+  async function startSensor(){if(!('DeviceOrientationEvent'in window)){status.textContent='此瀏覽器沒有方向感測器，請使用滑桿或拖曳。';return}try{if(typeof DeviceOrientationEvent.requestPermission==='function'){const answer=await DeviceOrientationEvent.requestPermission();if(answer!=='granted'){status.textContent='未取得感測器權限；滑桿仍可操作。';return}}window.addEventListener('deviceorientation',onOrientation,true);baseline=null;sensorOn=true;mode.textContent='設備互動';gyro.textContent='停用設備轉動';status.textContent='等待方向感測資料，請稍微轉動裝置……'}catch{status.textContent='感測器無法啟用，請確認 HTTPS 與瀏覽器權限。'}}
+  function stopSensor(){window.removeEventListener('deviceorientation',onOrientation,true);sensorOn=false;baseline=null;gyro.textContent='啟用設備轉動';mode.textContent='手動互動'}
+  gyro.addEventListener('click',()=>{if(sensorOn)stopSensor();else startSensor()});document.querySelector('#calibrate').addEventListener('click',()=>{baseline=null;sensorAngle=0;update(0);status.textContent=sensorOn?'目前姿勢已設為 0°。':'請先啟用設備轉動，再校正 0°。'});axis.addEventListener('change',()=>{baseline=null;status.textContent='轉動方式已切換，請重新校正 0°。'});
+  video.addEventListener('pointerdown',e=>{pointerDown=true;const rect=video.getBoundingClientRect();dragPrevious=Math.atan2(e.clientY-rect.top-rect.height/2,e.clientX-rect.left-rect.width/2);video.setPointerCapture(e.pointerId);video.classList.add('dragging');stopPreview()});
+  video.addEventListener('pointermove',e=>{if(!pointerDown)return;const rect=video.getBoundingClientRect(),x=e.clientX-rect.left-rect.width/2,y=e.clientY-rect.top-rect.height/2;if(Math.hypot(x,y)<24){dragPrevious=null;return}const current=Math.atan2(y,x);if(dragPrevious===null){dragPrevious=current;return}let delta=(current-dragPrevious)*180/Math.PI;dragPrevious=current;if(delta>180)delta-=360;if(delta< -180)delta+=360;video.pause();update(angle+delta);status.textContent='沿圓心拖曳畫面，可正向或反向連續旋轉。'});
+  function release(){pointerDown=false;dragPrevious=null;video.classList.remove('dragging')}video.addEventListener('pointerup',release);video.addEventListener('pointercancel',release);
+  window.addEventListener('keydown',e=>{if(['INPUT','TEXTAREA','SELECT','BUTTON','SUMMARY'].includes(e.target.tagName))return;if(e.code==='Space'){e.preventDefault();play.click()}else if(e.key==='ArrowRight'){e.preventDefault();stopPreview();video.pause();update(angle+(e.shiftKey?15:3))}else if(e.key==='ArrowLeft'){e.preventDefault();stopPreview();video.pause();update(angle-(e.shiftKey?15:3))}else if(e.key==='Home'){e.preventDefault();stopPreview();video.pause();update(0)}});
+  update(0);
+})();
+</script>
+</body>
+</html>
